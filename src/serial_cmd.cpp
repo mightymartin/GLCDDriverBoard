@@ -131,6 +131,21 @@ void SerCmdGetCommands(void){
 						GLCDdrawStringAt(xpos, ypos, displayBuffer, inverted, underline);
 						retValue = 1;																			
 						break;	
+                    case 'B':
+						//##########SET BACKLIGHT ON / OFF	
+                        if(!handshake){
+                            retValue = 2;
+                            break; //-> no HANDSHAKE, no Service
+                        } 
+                        					
+						if(readBuffer() == '1'){
+							GLCDBacklight(1);														
+							retValue = 1;
+						}else{
+							GLCDBacklight(0);														
+							retValue = 1;
+						}							
+						break;	
                     case 'W':
 						//##########show wait/Loading Screen
 						if(!handshake){

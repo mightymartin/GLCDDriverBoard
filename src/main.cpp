@@ -4,10 +4,9 @@
 #include "serial_cmd.h"
 
 void setup(void) {
-    SerCmdInit();
-    delay(2);
-    RotEncInit(); 
     GLCDInit();
+    SerCmdInit();
+    RotEncInit();     
 }
 
 void loop(void) {

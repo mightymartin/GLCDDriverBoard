@@ -3,6 +3,8 @@
 static uint8_t needsUpdate = 0;
 
 void GLCDInit(){
+    GLCDBacklight(1);
+
     ks0108_init(GLCD_PIN_D0, GLCD_PIN_D1, GLCD_PIN_D2 ,GLCD_PIN_D3, GLCD_PIN_D4, GLCD_PIN_D5, GLCD_PIN_D6, GLCD_PIN_D7, GLCD_PIN_EN, GLCD_PIN_DC, GLCD_PIN_CS1, GLCD_PIN_CS2, GLCD_PIN_RST, GLCD_PIN_RW);
     ks0108_clear();
     ks0108_update();
@@ -37,6 +39,15 @@ void GLCDdrawStringAt(uint8_t x_pos, uint8_t y_pos, char* string, uint8_t invert
 	while(*string){
 		GLCDdrawCharAt(x_pos++,y_pos,*string++, inverted, underline, 1);	
 	}	
+}
+
+void GLCDBacklight(uint8_t val){
+    pinMode(GLCD_PIN_LED,OUTPUT);
+    if(val == 0){
+        digitalWrite(GLCD_PIN_LED,HIGH);
+    }else{
+        digitalWrite(GLCD_PIN_LED,LOW);
+    }
 }
 
 void GLCDInvert(){

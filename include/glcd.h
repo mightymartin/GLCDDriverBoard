@@ -24,6 +24,8 @@
 #define GLCD_PIN_RST    4
 #define GLCD_PIN_RW     8
 
+#define GLCD_PIN_LED    19
+
 //######################################
 //## Font Config
 //######################################
@@ -40,4 +42,6 @@ extern void GLCDdrawCharAt(uint8_t x_pos, uint8_t y_pos, uint8_t c, uint8_t inve
 extern void GLCDdrawStringAt(uint8_t x_pos, uint8_t y_pos, char* string, uint8_t inverted, uint8_t underline);
 extern void GLCDInvert();
 extern void GLCDClear();
+extern void GLCDBacklight(uint8_t val);
+
 #endif
